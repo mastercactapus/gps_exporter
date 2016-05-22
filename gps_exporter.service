@@ -1,0 +1,13 @@
+[Unit]
+Description=GPS exporter for prometheus
+
+[Service]
+# settings for Ultimate GPS Breakout from adafruit
+ExecStartPre=/bin/stty -F /dev/ttyUSB0 9600 raw
+ExecStart=/usr/bin/gps_exporter
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
+
